@@ -1,6 +1,6 @@
-# Moneyfy
+# EDUFINNANCEHUB
 
-MoneyFy is a platform that helps you control your spending and achieve your savings goals.
+EduFinnanceHub is a platform that helps you control your spending and achieve your savings goals.
 
 - 💰 Add your incomes 
 - 💸 Control your expenses
