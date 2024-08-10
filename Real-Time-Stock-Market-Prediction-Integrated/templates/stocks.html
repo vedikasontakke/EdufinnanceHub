@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Prices Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .modal-dialog {
+            max-width: 800px;
+        }
+        .modal-body img {
+            width: 100%;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Stock Prices</h1>
+        <form method="POST" class="text-center mb-4">
+            <input type="text" name="search" class="form-control w-25 d-inline" placeholder="Search for a stock..." />
+            <input type="submit" class="btn btn-primary" value="Search" />
+        </form>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Stock Name</th>
+                    <th>Company Name</th>
+                    <th>Price (USD)</th>
+                    <th>Change in 24 hours (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stocks %}
+                <tr data-symbol="{{ stock['name'] }}">
+                    <td>{{ stock['name'] }}</td>
+                    <td>{{ stock['company'] }}</td>
+                    <td>{{ stock['price'] }}</td>
+                    <td class="{{ 'text-success' if stock['change'] > 0 else 'text-danger' }}">{{ stock['change'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="chartModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chartModalLabel">Candlestick Chart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="" id="chartImage" alt="Candlestick Chart">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('tr[data-symbol]').click(function() {
+                var symbol = $(this).data('symbol');
+                $.get('/chart/' + symbol, function(data) {
+                    if (data.chart_data) {
+                        $('#chartImage').attr('src', 'data:image/png;base64,' + data.chart_data);
+                        $('#chartModal').modal('show');
+                    } else {
+                        alert('Error generating chart.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
