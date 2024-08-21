@@ -39,7 +39,7 @@ class ExpenseCategoriesChart extends React.Component {
             enabled: true,
             y: {
               formatter: function(val){
-                return val + "€"
+                return val + "₹"
               },
               title:{
                 formatter: function(seriesName){

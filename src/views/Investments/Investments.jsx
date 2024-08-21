@@ -9,10 +9,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Investment = ({ }) => {
 
-   
-
-    
-
     const [total, setTotal] = useState()
     const { user } = useAuthContext()
 

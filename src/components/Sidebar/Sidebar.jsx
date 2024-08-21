@@ -51,21 +51,21 @@ const sidebarNavItems = [
         section: 'commons',
         sectionNumber: 1
     },
-  /*  {
+    {
         display: 'Scholarship',
         icon: <RiRobot2Line />,
         to: '/scholarship',
         section: 'scholarship',
         sectionNumber: 2
     },
-    {
+   {
         display: 'Investments',
         icon: <FiThumbsUp />,
         to: '/investments',
         section: 'investments',
         sectionNumber: 0
     },
-    {
+ /*   {
         display: 'Budget Guessing',
         title: 'FINANCE EXPLORER GAMES',
         icon: <GiChessQueen />,
@@ -82,10 +82,10 @@ const sidebarNavItems = [
     {
         display: 'Loan Interview',
         icon: <GiJoystick />,
-        url: 'https://6698b47c2b97e7509331ca90--wondrous-salamander-c3ec3b.netlify.app/3333333',
+        url: 'https://6698b47c2b97e7509331ca90--wondrous-salamander-c3ec3b.netlify.app/',
         section: 'profile',
         sectionNumber: 3
-    }, 
+    }, */
     {
         display: 'Profile',
         title: 'MY ACCOUNT',
@@ -93,7 +93,7 @@ const sidebarNavItems = [
         to: '/profile',
         section: 'profile',
         sectionNumber: 4
-    },*/
+    },
     {
         display: 'Logout',
         icon: <FiLogOut />,
